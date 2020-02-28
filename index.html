@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/28/hello-world/" data-id="ck762ptwb0001r8nrdqx308sy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/28/hello-world/" data-id="ck763dwpr000124nr6jv231i2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +135,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="使用hexo搭建博客"><a href="#使用hexo搭建博客" class="headerlink" title="使用hexo搭建博客"></a>使用hexo搭建博客</h1><h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>到官网下载</p>
+        <h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>到官网下载</p>
 <p><a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></p>
 <p>一路下一步安装即可</p>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>进入中断，切换为root（win下即cmd）</p>
@@ -177,19 +177,29 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo deploy</span><br><span class="line">&gt; hexo d</span><br></pre></td></tr></table></figure>
 
 <h4 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h4><p>使用new新建的文件在blog_root\source_posts目录下。</p>
-<p>也可以直接把写好的md文件放进这个目录。</p>
-<p>之后可以先清除缓存文件和静态文件，然后使用生成静态文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo clean</span><br><span class="line">&gt; hexo generate</span><br></pre></td></tr></table></figure>
+<p>也可以直接把写好的md文件放进这个目录，但要注意hexo会把文件名作为博文的标题。</p>
+<p>之后可以先清除缓存文件和静态文件，然后使用生成静态文件。（这里不clean问题也不大）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo clean</span><br><span class="line">&gt; hexo g</span><br></pre></td></tr></table></figure>
 
 <p>Hexo 能够监视文件变动并立即重新生成静态文件，在生成时会比对文件的 SHA1 checksum，只有变动的文件才会写入。</p>
 <p>可执行下列的其中一个命令，让 Hexo 在生成完毕后自动部署网站，两个命令的作用是相同的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo generate --deploy</span><br><span class="line">&gt; hexo deploy --generate</span><br><span class="line"># 也可简写</span><br><span class="line">&gt; hexo g -d</span><br><span class="line">&gt; hexo d -g</span><br></pre></td></tr></table></figure>
 
+<h4 id="部署到远端"><a href="#部署到远端" class="headerlink" title="部署到远端"></a>部署到远端</h4><p>登陆github，新建仓库，命名为<u>xiaoliou008</u>.github.io，其中下划线的部分是用户昵称。</p>
+<p>然后使用cnpm安装git插件（如果有警告忽略即可）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>修改设置文件，即blog_root/_config.yml文件，将最后一段修改如下（加入3行，即部署类型改为git，仓库地址填入，指定master分支）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;xiaoliou008&#x2F;xiaoliou008.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>接下来使用deploy命令部署</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo d</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/28/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ck762xdun00004wnr666w72v9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/28/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ck763dwpe000024nrh4h4dmc8" class="article-share-link">Share</a>
       
       
     </footer>
