@@ -20,27 +20,32 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="问题说明为了将算法笔记从markdown格式转成latex格式，需要解决markdown中引用的那些网络图片如何在latex中显示的问题。 解决方案1暂时找到的解决方案是在latex中使用\write18{wget url}的方式，把网络图片在编译期间就下载到本地，之后就直接引用本地图片的文件路径即可。 https:&#x2F;&#x2F;tex.stackexchange.com&#x2F;questions&#x2F;5433&#x2F;ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTeX插入网络链接图片">
+<meta property="og:url" content="http://yoursite.com/2020/03/02/LaTeX%E6%8F%92%E5%85%A5%E7%BD%91%E7%BB%9C%E9%93%BE%E6%8E%A5%E5%9B%BE%E7%89%87/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题说明为了将算法笔记从markdown格式转成latex格式，需要解决markdown中引用的那些网络图片如何在latex中显示的问题。 解决方案1暂时找到的解决方案是在latex中使用\write18{wget url}的方式，把网络图片在编译期间就下载到本地，之后就直接引用本地图片的文件路径即可。 https:&#x2F;&#x2F;tex.stackexchange.com&#x2F;questions&#x2F;5433&#x2F;ca">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-01T16:03:40.000Z">
+<meta property="article:modified_time" content="2020-03-01T16:04:00.260Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="LaTeX">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/03/02/LaTeX%E6%8F%92%E5%85%A5%E7%BD%91%E7%BB%9C%E9%93%BE%E6%8E%A5%E5%9B%BE%E7%89%87/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Hexo</title>
+  <title>LaTeX插入网络链接图片 | Hexo</title>
   
 
 
@@ -140,10 +145,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/LaTeX%E6%8F%92%E5%85%A5%E7%BD%91%E7%BB%9C%E9%93%BE%E6%8E%A5%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -157,8 +162,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/02/LaTeX%E6%8F%92%E5%85%A5%E7%BD%91%E7%BB%9C%E9%93%BE%E6%8E%A5%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">LaTeX插入网络链接图片</a>
+          LaTeX插入网络链接图片
         </h1>
 
         <div class="post-meta">
@@ -183,7 +187,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h2><p>为了将算法笔记从markdown格式转成latex格式，需要解决markdown中引用的那些网络图片如何在latex中显示的问题。</p>
+        <h2 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h2><p>为了将算法笔记从markdown格式转成latex格式，需要解决markdown中引用的那些网络图片如何在latex中显示的问题。</p>
 <h2 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h2><p>暂时找到的解决方案是在latex中使用\write18{wget url}的方式，把网络图片在编译期间就下载到本地，之后就直接引用本地图片的文件路径即可。</p>
 <p><a href="https://tex.stackexchange.com/questions/5433/can-i-use-an-image-located-on-the-web-in-a-latex-document" target="_blank" rel="noopener">https://tex.stackexchange.com/questions/5433/can-i-use-an-image-located-on-the-web-in-a-latex-document</a></p>
 <ul>
@@ -219,225 +223,36 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    old_file = open(<span class="string">"try.tex"</span>, <span class="string">"r"</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">    new_file = open(<span class="string">"new.tex"</span>, <span class="string">"w"</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">    list = old_file.readlines()</span><br><span class="line">    print(list[<span class="number">135</span>])</span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> list:</span><br><span class="line">        <span class="comment"># lstrip去除前导空格，startswith判断是否以某个字符串打头</span></span><br><span class="line">        <span class="keyword">if</span> line.lstrip().startswith(<span class="string">"\\includegraphics"</span>):</span><br><span class="line">            jpg_name = line[line.rfind(<span class="string">'/'</span>):]</span><br><span class="line">            jpg_name = jpg_name[<span class="number">1</span>:jpg_name.find(<span class="string">'&#125;'</span>)]   </span><br><span class="line">            <span class="comment"># 去掉结尾的 &#125; 注意没有lfind</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> jpg_name.find(<span class="string">'?'</span>) == <span class="number">-1</span>:</span><br><span class="line">                jpg_name = jpg_name[<span class="number">0</span>:jpg_name.find(<span class="string">'?'</span>)]</span><br><span class="line">            print(jpg_name)</span><br><span class="line">            url = line[line.find(<span class="string">'&#123;'</span>)+<span class="number">1</span>:line.find(<span class="string">'&#125;'</span>)]</span><br><span class="line">            print(url)</span><br><span class="line">            print(line)</span><br><span class="line">            cnt = cnt + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            new_file.writelines(<span class="string">"\IfFileExists&#123;"</span> + jpg_name + <span class="string">"&#125;&#123;&#125;&#123;\n"</span>)</span><br><span class="line">            new_file.writelines(<span class="string">"\t\write18&#123;wget "</span> + url + <span class="string">'&#125;\n'</span>)</span><br><span class="line">            new_file.writelines(<span class="string">"&#125;\n"</span>)</span><br><span class="line">            new_file.writelines(<span class="string">"\includegraphics&#123;"</span> + jpg_name + <span class="string">"&#125;\n"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_file.writelines(line)</span><br><span class="line">    print(cnt)</span><br><span class="line">    old_file.close()</span><br><span class="line">    new_file.close()</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/LaTeX/" rel="tag"># LaTeX</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/28/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">使用hexo搭建博客</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-28 20:33:11 / Modified: 20:37:08" itemprop="dateCreated datePublished" datetime="2020-02-28T20:33:11+08:00">2020-02-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>到官网下载</p>
-<p><a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></p>
-<p>一路下一步安装即可</p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>进入终端，切换为root（win下即cmd）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; node -v</span><br><span class="line">&gt; npm -v</span><br></pre></td></tr></table></figure>
-
-<p>显示版本表示安装成功</p>
-<p>接下来使用npm包管理器来安装hexo（这里先切换镜像源）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">&gt; cnpm -v</span><br><span class="line">&gt; cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>检查hexo是否安装成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo -v</span><br></pre></td></tr></table></figure>
-
-<p>完成hexo安装</p>
-<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>首先新建一个目录blog_root，进入目录，将该目录初始化为博客根目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo init</span><br></pre></td></tr></table></figure>
-
-<p>启动博客，可以用hexo server（简写为s）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo s</span><br></pre></td></tr></table></figure>
-
-<p>其他命令可用hexo -h查看（一般缩写就是第一个字母），常见命令有：</p>
-<ul>
-<li>创建新文章</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new &quot;My New Post&quot;</span><br><span class="line">&gt; hexo n &quot;My New Post&quot;</span><br><span class="line"># 可以把文件名和文章标题分开</span><br><span class="line">&gt; hexo new -s &#39;article-1&#39; &#39;文章标题&#39;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动本地服务器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo server</span><br><span class="line">&gt; hexo s</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>生成静态文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo generate</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>部署到远程服务器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo deploy</span><br><span class="line">&gt; hexo d</span><br></pre></td></tr></table></figure>
-
-<h4 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h4><p>使用new新建的文件在blog_root\source_posts目录下。</p>
-<p>也可以直接把写好的md文件放进这个目录，但要注意hexo会把文件名作为博文的标题。这种方法<strong>不推荐</strong>，因为时间戳会有问题。如果一定要自行加入md文件，最好在开头加上文章标题和时间。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 使用hexo搭建博客</span><br><span class="line">date: 2020-02-28 20:33:11</span><br><span class="line">tags: 前端</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>之后可以先清除缓存文件和静态文件，然后使用生成静态文件。（这里不clean问题也不大）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo clean</span><br><span class="line">&gt; hexo g</span><br></pre></td></tr></table></figure>
-
-<p>Hexo 能够监视文件变动并立即重新生成静态文件，在生成时会比对文件的 SHA1 checksum，只有变动的文件才会写入。</p>
-<p>可执行下列的其中一个命令，让 Hexo 在生成完毕后自动部署网站，两个命令的作用是相同的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo generate --deploy</span><br><span class="line">&gt; hexo deploy --generate</span><br><span class="line"># 也可简写</span><br><span class="line">&gt; hexo g -d</span><br><span class="line">&gt; hexo d -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="部署到远端"><a href="#部署到远端" class="headerlink" title="部署到远端"></a>部署到远端</h4><p>登陆github，新建仓库，命名为<u>xiaoliou008</u>.github.io，其中下划线的部分是用户昵称。</p>
-<p>然后使用cnpm安装git插件（如果有警告忽略即可）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-<p>修改设置文件，即blog_root/_config.yml文件，将最后一段修改如下（加入3行，即部署类型改为git，仓库地址填入，指定master分支）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  # repo: https:&#x2F;&#x2F;github.com&#x2F;xiaoliou008&#x2F;xiaoliou008.github.io.git</span><br><span class="line">  # 使用上面这种也行，但可能会每次都要输用户名和密码</span><br><span class="line">  repo: git@github.com:xiaoliou008&#x2F;xiaoliou008.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>接下来使用deploy命令部署（可能会需要输入用户名和密码）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo d</span><br></pre></td></tr></table></figure>
-
-<h4 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h4><p>下面以next主题为例（<a href="https://github.com/iissnan/hexo-theme-next）" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next）</a></p>
-<p>首先新建并克隆主题到本地的themes/next目录下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br><span class="line"># 或者也可以用下面这个，似乎是更新的版本,上面这个会出现attention</span><br><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
-
-<p>然后同样需要修改配置文件_config.yml</p>
-<p>找到主题那一块代码，把原来的主题landscape替换成next</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
-<p>之后clean，generate，然后启动或者部署，即可看到效果。</p>
-<p>注意很多时候需要浏览器清空缓存之后才会更新主题样式。</p>
-<h5 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h5><p>程序羊： <a href="https://www.bilibili.com/video/av44544186" target="_blank" rel="noopener">https://www.bilibili.com/video/av44544186</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-28 18:52:54" itemprop="dateCreated datePublished" datetime="2020-02-28T18:52:54+08:00">2020-02-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/28/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="使用hexo搭建博客">
+      <i class="fa fa-chevron-left"></i> 使用hexo搭建博客
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -488,6 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题说明"><span class="nav-number">1.</span> <span class="nav-text">问题说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案1"><span class="nav-number">2.</span> <span class="nav-text">解决方案1</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
