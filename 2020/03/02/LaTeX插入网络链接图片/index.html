@@ -28,7 +28,7 @@
 <meta property="og:description" content="问题说明为了将算法笔记从markdown格式转成latex格式，需要解决markdown中引用的那些网络图片如何在latex中显示的问题。 解决方案1暂时找到的解决方案是在latex中使用\write18{wget url}的方式，把网络图片在编译期间就下载到本地，之后就直接引用本地图片的文件路径即可。 https:&#x2F;&#x2F;tex.stackexchange.com&#x2F;questions&#x2F;5433&#x2F;ca">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-01T16:03:40.000Z">
-<meta property="article:modified_time" content="2020-03-01T16:04:00.260Z">
+<meta property="article:modified_time" content="2020-03-02T05:54:45.816Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="LaTeX">
 <meta name="twitter:card" content="summary">
@@ -173,7 +173,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-03-02 00:03:40 / Modified: 00:04:00" itemprop="dateCreated datePublished" datetime="2020-03-02T00:03:40+08:00">2020-03-02</time>
+              <time title="Created: 2020-03-02 00:03:40 / Modified: 13:54:45" itemprop="dateCreated datePublished" datetime="2020-03-02T00:03:40+08:00">2020-03-02</time>
             </span>
 
           
@@ -222,6 +222,47 @@
 <p>接下来需要把原来的60多处网络图片的代码都作上述修改，这里编写一个脚本来完成。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    old_file = open(<span class="string">"try.tex"</span>, <span class="string">"r"</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">    new_file = open(<span class="string">"new.tex"</span>, <span class="string">"w"</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">    list = old_file.readlines()</span><br><span class="line">    print(list[<span class="number">135</span>])</span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> list:</span><br><span class="line">        <span class="comment"># lstrip去除前导空格，startswith判断是否以某个字符串打头</span></span><br><span class="line">        <span class="keyword">if</span> line.lstrip().startswith(<span class="string">"\\includegraphics"</span>):</span><br><span class="line">            jpg_name = line[line.rfind(<span class="string">'/'</span>):]</span><br><span class="line">            jpg_name = jpg_name[<span class="number">1</span>:jpg_name.find(<span class="string">'&#125;'</span>)]   </span><br><span class="line">            <span class="comment"># 去掉结尾的 &#125; 注意没有lfind</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> jpg_name.find(<span class="string">'?'</span>) == <span class="number">-1</span>:</span><br><span class="line">                jpg_name = jpg_name[<span class="number">0</span>:jpg_name.find(<span class="string">'?'</span>)]</span><br><span class="line">            print(jpg_name)</span><br><span class="line">            url = line[line.find(<span class="string">'&#123;'</span>)+<span class="number">1</span>:line.find(<span class="string">'&#125;'</span>)]</span><br><span class="line">            print(url)</span><br><span class="line">            print(line)</span><br><span class="line">            cnt = cnt + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            new_file.writelines(<span class="string">"\IfFileExists&#123;"</span> + jpg_name + <span class="string">"&#125;&#123;&#125;&#123;\n"</span>)</span><br><span class="line">            new_file.writelines(<span class="string">"\t\write18&#123;wget "</span> + url + <span class="string">'&#125;\n'</span>)</span><br><span class="line">            new_file.writelines(<span class="string">"&#125;\n"</span>)</span><br><span class="line">            new_file.writelines(<span class="string">"\includegraphics&#123;"</span> + jpg_name + <span class="string">"&#125;\n"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_file.writelines(line)</span><br><span class="line">    print(cnt)</span><br><span class="line">    old_file.close()</span><br><span class="line">    new_file.close()</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>空格解析问题</li>
+</ul>
+<p>一个URL的基本组成部分包括协议(scheme)、 域名、端口号、路径和查询字符串（路径参数和锚点标记就暂不考虑了）。路径和查询字符串之间用问号?分离。例如<a href="http://www.example.com/index?param=1，路径为index，查询字符串" target="_blank" rel="noopener">http://www.example.com/index?param=1，路径为index，查询字符串</a>(Query String)为param=1。URL中关于空格的编码正是与空格所在位置相关：<strong>空格被编码成加号+的情况只会在查询字符串部分出现，而被编码成%20则可以出现在路径和查询字符串中。</strong></p>
+<p>而在LaTeX中，%表示注释，因此不能直接使用。但是我发现如果使用%来转移，那么它底层的编码里会出现\，导致域名解析失败。</p>
+<p>所以如果url里面有空格，还真不太好解决</p>
+<p>此外，上面的代码也只能修改以\includegraphics打头的代码，还有些漏网之鱼需要手动修改。</p>
+<ul>
+<li>未定义序列问题</li>
+</ul>
+<p>将md直接转成tex格式，还是有许多格式问题</p>
+<p>\exist应该改成\exists</p>
+<p>\quad后面要加空格与正文隔开</p>
+<p>\infin改为\infty</p>
+<p>2602行左右将array格式改为cases格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\[g_i(X)&#x3D;</span><br><span class="line">\begin&#123;cases&#125;&#123;&#125;</span><br><span class="line">0 &amp; i&#x3D;n\\</span><br><span class="line">- \infty &amp; X&lt;0\\</span><br><span class="line">max\&#123;g_&#123;i+1&#125;(X),\ g_&#123;i+1&#125;(X-W_&#123;i+1&#125;)+P_&#123;i+1&#125;\&#125; &amp; otherwise</span><br><span class="line">\end&#123;cases&#125; \]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;align*&#125;</span><br><span class="line">	f(S, T) &amp;&#x3D; f^&#123;out&#125;(s) - f^&#123;in&#125;(s) - f^&#123;in&#125;(v) + f^&#123;out&#125;(v)\\</span><br><span class="line">			&amp;&#x3D; f^&#123;out&#125;(s) - f^&#123;in&#125;(s)\\</span><br><span class="line">			&amp;&#x3D; |f|</span><br><span class="line">\end&#123;align*&#125;</span><br></pre></td></tr></table></figure>
+
+<p>箭头没法直接解析，要用\uparrow，估计后面很多箭头都无法正常解析，但也不报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\[f\uparrow f’(u, v) &#x3D;</span><br><span class="line">\begin&#123;cases&#125;&#123;&#125;</span><br><span class="line">	f(u,v) + f&#39;(u,v) - f&#39;(v,u)&amp; \text&#123;(u,v)&#125; \in E \\</span><br><span class="line">	0&amp; \text&#123;else&#125;</span><br><span class="line">\end&#123;cases&#125; \]</span><br></pre></td></tr></table></figure>
+
+<p>注意一点，$符号是在文本环境中使用的，但是在如equation等数学环境中不能使用（可以用\text后再用）</p>
+<ul>
+<li>不显示中文</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;ctex&#125;	% 非常关键！</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>标题、目录、页码等设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">\title&#123;\heiti 算法笔记整理&#125;</span><br><span class="line">\author&#123;\kaishu ACM1701全班&#125;</span><br><span class="line">\date&#123;\today&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">	</span><br><span class="line">\maketitle			% 显示标题</span><br><span class="line">\thispagestyle&#123;empty&#125; % 当前页不显示页码</span><br><span class="line">\newpage			% 另起一页</span><br><span class="line"></span><br><span class="line">\pagestyle&#123;plain&#125;</span><br><span class="line">\setcounter&#123;page&#125;&#123;1&#125;</span><br><span class="line">\pagenumbering&#123;Roman&#125;	% 目录页码为罗马字体</span><br><span class="line">\tableofcontents	% 显示目录</span><br><span class="line">\newpage</span><br><span class="line"></span><br><span class="line">\setcounter&#123;page&#125;&#123;1&#125;	% 正文部分</span><br><span class="line">\pagenumbering&#123;arabic&#125;	% 阿拉伯数字</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>目录</li>
+</ul>
+<p>其实在markdown里，可以直接用 [toc] 这个语法插入目录，之前都不知道</p>
 
     </div>
 
